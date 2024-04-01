@@ -4,10 +4,27 @@ function GuessWord({ correctWord }) {
   const [guess, setGuess] = useState('');
   const [feedback, setFeedback] = useState('');
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log('guess submitted:', guess);
-    const feedbackResult = wordFeedback(guess, correctWord);
-    setFeedback(feedbackResult);
+
+    try {
+      const response = await fetch('http://localhost:5080/api/guessWord', {
+        method: 'POST',
+        headers: {
+          'content-Type': 'application/json',
+        },
+        body: JSON.stringify({ guess, correctWord }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit guess');
+      }
+
+      const feedbackResult = await response.json();
+      setFeedback(feedbackResult);
+    } catch (error) {
+      console.error('Error submitting guess:', error);
+    }
   };
 
   return (
@@ -18,6 +35,7 @@ function GuessWord({ correctWord }) {
           type='text'
           id='guessInput'
           value={guess}
+          maxLength={6}
           onChange={(e) => setGuess(e.target.value)}
         />
         <button onClick={handleSubmit}>Submit</button>
