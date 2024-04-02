@@ -39,7 +39,9 @@ function GenerateWord({ onGenerateWord }) {
       const randomIndex = Math.floor(Math.random() * wordList.length);
       const randomWord = wordList[randomIndex];
 
-      setFeedback('A New word has been Generated you can now make your guess.');
+      setFeedback(
+        'A New word has been Generated you can now make your guess to start the game.'
+      );
       onGenerateWord(randomWord);
     } catch (error) {
       console.error('Error generating word:', error);
@@ -51,6 +53,10 @@ function GenerateWord({ onGenerateWord }) {
     <div className=' flex flex-col items-center justify-center '>
       <div className=' flex flex-col items-center justify-center'>
         <h1 className='text-green-500 font-bold'>Wordle Game</h1>
+        <p>
+          Choose if you want to allow duplicates and the length of the word you
+          want
+        </p>
         <label className=' p-4 '>
           <input
             type='checkbox'
