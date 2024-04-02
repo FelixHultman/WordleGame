@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/header';
 import GuessWord from './components/guessWord';
 import GenerateWord from './components/generateWord';
+import './index.css';
 
 function App() {
   const [correctWord, setCorrectWord] = useState('');

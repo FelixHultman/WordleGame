@@ -48,9 +48,9 @@ function GenerateWord({ onGenerateWord }) {
   };
 
   return (
-    <div className='containers'>
-      <h1>Wordle Game</h1>
-      <div className='options-select'>
+    <div>
+      <h1 className='text-green-500 font-bold'>Wordle Game</h1>
+      <div>
         <label>
           <input
             type='checkbox'
@@ -71,7 +71,7 @@ function GenerateWord({ onGenerateWord }) {
         </label>
         <button onClick={handleGenerateWord}>Generate Word</button>
       </div>
-      <div className='feedback-section'>
+      <div>
         <p>{feedback}</p>
       </div>
     </div>
