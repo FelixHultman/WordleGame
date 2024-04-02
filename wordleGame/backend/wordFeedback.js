@@ -22,7 +22,7 @@ function WordFeedback(guessWord, correctWord) {
     if (guessedLetter === correctLetter) {
       feedback.push({
         letter: guessedLetter,
-        result: 'You got it 100% right!',
+        color: 'green',
       });
     } else if (
       correctArray.includes(guessedLetter) &&
@@ -30,12 +30,12 @@ function WordFeedback(guessWord, correctWord) {
     ) {
       feedback.push({
         letter: guessedLetter,
-        result: 'Right letter, wrong place!',
+        color: 'yellow',
       });
     } else {
       feedback.push({
         letter: guessedLetter,
-        result: 'Not in the ballpark, bro',
+        color: 'red',
       });
     }
   }

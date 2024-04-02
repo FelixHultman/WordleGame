@@ -22,6 +22,8 @@ function GuessWord({ correctWord }) {
 
       const feedbackResult = await response.json();
       setFeedback(feedbackResult);
+
+      console.log('Feedback received:', feedbackResult);
     } catch (error) {
       console.error('Error submitting guess:', error);
     }
@@ -43,10 +45,9 @@ function GuessWord({ correctWord }) {
       <div className='feedback-section'>
         {feedback &&
           feedback.map((item, index) => (
-            <p key={index}>
-              <strong>Letter:</strong> {item.letter}, <strong>Result:</strong>{' '}
-              {item.result}
-            </p>
+            <span key={index} style={{ color: item.color }}>
+              {item.letter}
+            </span>
           ))}
       </div>
     </div>
