@@ -22,6 +22,7 @@ function GuessWord({ correctWord }) {
 
       const feedbackResult = await response.json();
       setFeedback(feedbackResult);
+      setGuess('');
 
       console.log('Feedback received:', feedbackResult);
     } catch (error) {
@@ -30,8 +31,8 @@ function GuessWord({ correctWord }) {
   };
 
   return (
-    <div className='container'>
-      <div className='guess-section'>
+    <div className=' flex flex-col items-center justify-center p-11'>
+      <div className=' flex justify-center'>
         <label htmlFor='guessInput'>Enter your guess:</label>
         <input
           type='text'
@@ -42,11 +43,11 @@ function GuessWord({ correctWord }) {
         />
         <button onClick={handleSubmit}>Submit</button>
       </div>
-      <div className='feedback-section'>
+      <div className='mt-4 text-4xl'>
         {feedback &&
           feedback.map((item, index) => (
-            <span key={index} style={{ color: item.color }}>
-              {item.letter}
+            <span className='p-1' key={index} style={{ color: item.color }}>
+              {item.letter.toUpperCase()}
             </span>
           ))}
       </div>

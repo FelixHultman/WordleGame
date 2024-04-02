@@ -48,10 +48,10 @@ function GenerateWord({ onGenerateWord }) {
   };
 
   return (
-    <div>
-      <h1 className='text-green-500 font-bold'>Wordle Game</h1>
-      <div>
-        <label>
+    <div className=' flex flex-col items-center justify-center '>
+      <div className=' flex flex-col items-center justify-center'>
+        <h1 className='text-green-500 font-bold'>Wordle Game</h1>
+        <label className=' p-4 '>
           <input
             type='checkbox'
             checked={permitDuplicate}
@@ -59,7 +59,7 @@ function GenerateWord({ onGenerateWord }) {
           />
           Allow Duplicates
         </label>
-        <label>
+        <label className=' p-4'>
           Word Length:
           <input
             type='number'
