@@ -33,7 +33,9 @@ function GuessWord({ correctWord }) {
   return (
     <div className=' flex flex-col items-center justify-center p-11'>
       <div className=' flex justify-center'>
-        <label htmlFor='guessInput'>Enter your guess:</label>
+        <label className='mr-1' htmlFor='guessInput'>
+          Enter your guess:
+        </label>
         <input
           type='text'
           id='guessInput'
@@ -41,9 +43,11 @@ function GuessWord({ correctWord }) {
           maxLength={6}
           onChange={(e) => setGuess(e.target.value)}
         />
-        <button onClick={handleSubmit}>Submit</button>
+        <button className='ml-1' onClick={handleSubmit}>
+          Submit
+        </button>
       </div>
-      <div className='mt-4 text-4xl'>
+      <div className='mt-4 text-4xl bg-slate-600'>
         {feedback &&
           feedback.map((item, index) => (
             <span className='p-1' key={index} style={{ color: item.color }}>

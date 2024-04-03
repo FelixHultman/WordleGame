@@ -4,6 +4,7 @@ function GenerateWord({ onGenerateWord }) {
   const [permitDuplicate, setPermitDuplicate] = useState(false);
   const [wordLength, setWordLength] = useState(5);
   const [feedback, setFeedback] = useState('');
+  const [wordGenerated, setWordGenerated] = useState(false);
 
   const removeWordsWithDuplicates = (wordList) => {
     return wordList.filter((word) => {
@@ -43,6 +44,7 @@ function GenerateWord({ onGenerateWord }) {
         'A New word has been Generated you can now make your guess to start the game.'
       );
       onGenerateWord(randomWord);
+      setWordGenerated(true);
     } catch (error) {
       console.error('Error generating word:', error);
       setFeedback('Failed to generate word. Please try again');
@@ -51,7 +53,11 @@ function GenerateWord({ onGenerateWord }) {
 
   return (
     <div className=' flex flex-col items-center justify-center '>
-      <div className=' flex flex-col items-center justify-center'>
+      <div
+        className={`flex flex-col items-center justify-center ${
+          wordGenerated ? 'hidden' : ''
+        }`}
+      >
         <h1 className='text-green-500 font-bold'>Wordle Game</h1>
         <p>
           Choose if you want to allow duplicates and the length of the word you
