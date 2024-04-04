@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 
-function GuessWord({ correctWord }) {
+function GuessWord({ correctWord, wordLength, permitDuplicate }) {
   const [guess, setGuess] = useState('');
   const [feedback, setFeedback] = useState('');
+  const [firstGuessMade, setFirstGuessMade] = useState(false);
 
   const handleSubmit = async () => {
     console.log('guess submitted:', guess);
 
     try {
+      if (!firstGuessMade) {
+        handleFirstGuess();
+        setFirstGuessMade(true);
+      }
+
       const response = await fetch('http://localhost:5080/api/guessWord', {
         method: 'POST',
         headers: {
@@ -30,6 +36,10 @@ function GuessWord({ correctWord }) {
     }
   };
 
+  const handleFirstGuess = () => {
+    console.log('First guess made!');
+  };
+
   return (
     <div className=' flex flex-col items-center justify-center p-11'>
       <div className=' flex justify-center'>
@@ -49,11 +59,14 @@ function GuessWord({ correctWord }) {
       </div>
       <div className='mt-4 text-4xl bg-slate-600'>
         {feedback &&
-          feedback.map((item, index) => (
-            <span className='p-1' key={index} style={{ color: item.color }}>
-              {item.letter.toUpperCase()}
-            </span>
-          ))}
+          feedback.map(
+            (item, index) =>
+              item.letter && (
+                <span className='p-1' key={index} style={{ color: item.color }}>
+                  {item.letter.toUpperCase()}
+                </span>
+              )
+          )}
       </div>
     </div>
   );

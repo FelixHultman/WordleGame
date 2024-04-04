@@ -3,10 +3,11 @@ import './App.css';
 import Header from './components/header';
 import GuessWord from './components/guessWord';
 import GenerateWord from './components/generateWord';
-import './index.css';
 
 function App() {
   const [correctWord, setCorrectWord] = useState('');
+  const [wordLength, setWordLength] = useState(5);
+  const [permitDuplicate, setPermitDuplicate] = useState(false);
 
   const handleGenerateWord = (word) => {
     console.log('Generated word:', word);
@@ -16,7 +17,11 @@ function App() {
   return (
     <>
       <Header />
-      <GenerateWord onGenerateWord={handleGenerateWord} />
+      <GenerateWord
+        onGenerateWord={handleGenerateWord}
+        wordLength={wordLength}
+        permitDuplicate={permitDuplicate}
+      />
       <GuessWord correctWord={correctWord} />
     </>
   );
