@@ -19,8 +19,10 @@ function App() {
       <Header />
       <GenerateWord
         onGenerateWord={handleGenerateWord}
+        setWordLength={setWordLength}
         wordLength={wordLength}
         permitDuplicate={permitDuplicate}
+        setPermitDuplicate={setPermitDuplicate}
       />
       <GuessWord correctWord={correctWord} />
     </>

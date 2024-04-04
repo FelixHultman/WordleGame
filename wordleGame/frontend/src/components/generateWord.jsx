@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 
-function GenerateWord({ onGenerateWord, wordLength, permitDuplicate }) {
+function GenerateWord({
+  onGenerateWord,
+  wordLength,
+  setWordLength,
+  permitDuplicate,
+  setPermitDuplicate,
+}) {
   const [feedback, setFeedback] = useState('');
   const [wordGenerated, setWordGenerated] = useState(false);
 
